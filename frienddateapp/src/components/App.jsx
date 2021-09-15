@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
 import './App.css';
+import RegistrationForm from './components/RegistrationForm/RegistrationForm';
+import React, { Component }  from 'react';
 
 
-class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-    render() { 
-        return ( );
-    }
+
+function App() {
+    return (
+        <div>
+            <RegistrationForm/>
+        </div>
+    )
 }
- 
-export default ;
+
+ export default App;
