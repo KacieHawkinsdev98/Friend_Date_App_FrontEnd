@@ -1,15 +1,29 @@
 import './App.css';
-import RegistrationForm from './components/RegistrationForm/RegistrationForm';
+import RegistrationForm from './RegistrationForm';
 import React, { Component }  from 'react';
 
 
 
-function App() {
-    return (
-        <div>
-            <RegistrationForm/>
-        </div>
-    )
-}
+class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { 
+            registrationinfo: {},
 
- export default App;
+         }
+    }
+
+
+
+    render() { 
+        return ( 
+            <div><RegistrationForm/></div>
+
+
+         );
+    }
+}
+ 
+export default App;
+
+
