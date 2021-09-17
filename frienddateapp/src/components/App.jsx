@@ -1,5 +1,6 @@
 import './App.css';
 import RegistrationForm from './RegistrationForm';
+import Login from './Login/Login';
 import React, { Component }  from 'react';
 
 
@@ -17,7 +18,9 @@ class App extends Component {
 
     render() { 
         return ( 
-            <div><RegistrationForm/></div>
+            <div><RegistrationForm />
+                <Login/></div>
+            
 
 
          );
