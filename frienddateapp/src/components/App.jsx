@@ -19,7 +19,9 @@ class App extends Component {
     render() { 
         return ( 
             <div><RegistrationForm />
-                <Login/></div>
+                <Login/>
+                <button onClick={() => console.log(localStorage.getItem("token"))}>Click for Token!</button>
+                </div>
             
 
 

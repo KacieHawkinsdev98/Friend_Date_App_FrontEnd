@@ -6,46 +6,50 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            user: {},
-            userName: "",
+            username: "",
             password: ""
-         }
-    }
-
-
-    handleChange = (event) => {
-        console.log (event.target.value)
-        this.setState({
-            [event.target.name]: event.target.value,
-            
+         };
     
-        })
+
+  this.handleChange = this.handleChange.bind(this);
+  this.handleSubmit = this.handleSubmit.bind(this);
+}
+
+async userLogin(user){
+    const response = await axios.post('http://127.0.0.1:8000/api/auth/login', user).then((res) => {
+        localStorage.setItem("token", res.data.access)
+    });
+   
+}
+    handleChange = (event)=> {
+        this.setState({[event.target.name]: event.target.value });
+            
      };
 
      handleSubmit = (event) => {
         event.preventDefault();
-        const user = {
-            userName: this.state.userName,
-          
-        }
-     }; 
+        var user = {
+            username: this.state.username,
+            password: this.state.password
+        };
+        this.userLogin(user)
+        this.setState({
+            token: user
+        })
 
-    async Login(user) {
-        const response= await axios.post('http://127.0.0.1:8000/api/auth/login',user)
-         this.setState({
-               Logininfo: response.data
-             
-           });
-           alert('you have sucessfully logged in');
-       }
+        alert('you have sucessfully logged in');
+    }
 
-    render() { 
+     render() { 
         return ( 
-            <form onSubmit={(event) => this.handleSubmit(event)}>
+        <form onSubmit={this.handleSubmit}>
         <label>Login</label>
-        <input type="text" name="userName" onChange={this.handleChange} value={this.state.userName}/>
+        <label>Username</label>
+        <input type="text" name="username" onChange={this.handleChange} value={this.state.username}/>
+        <label>Password</label>
+        <input type="text" name="password" onChange={this.handleChange} value={this.state.password}/>
         <button type="submit">Login</button>
-               </form>
+        </form>
          );
     }
 }
