@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-class Login extends Component {
+
+class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
@@ -40,6 +42,10 @@ async userLogin(user){
         alert('you have sucessfully logged in');
     }
 
+    onSubmit = ()  => {
+        this.props.history.push('/')
+    }
+
      render() { 
         return ( 
         <form onSubmit={this.handleSubmit}>
@@ -48,7 +54,7 @@ async userLogin(user){
         <input type="text" name="username" onChange={this.handleChange} value={this.state.username}/>
         <label>Password</label>
         <input type="text" name="password" onChange={this.handleChange} value={this.state.password}/>
-        <button type="submit">Login</button>
+        <button OnClick={this.onSubmit} type="submit">Login</button>
         </form>
          );
     }
